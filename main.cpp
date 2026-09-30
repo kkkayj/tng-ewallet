@@ -1,18 +1,21 @@
 #include <iostream>
+#include <iomanip> // for setprecision (show 2 decimal places)
 using namespace std;
 
 int main(){
     int choice; //menu choices for user to choose
+    double balance = 20.00; // starting wallet balance in RM
+    double amount; // amount the user types in (RM)
 
    //Welcome banner
    cout << "====================================" << endl;
    cout << "   Welcome to TNG eWallet" << endl;
    cout << "  Cashless payments, no cash needed!" << endl;
    cout << "====================================" << endl;
-   
+   cout << fixed << setprecision(2); // show money like RM20.00
+
    // Giving users to key in the input
    // Keep showing the menu until the user picks 5 (Exit)
-   
    do{
     cout << endl;
     cout << "----------MAIN MENU-----------" << endl;
@@ -25,13 +28,23 @@ int main(){
         cin >> choice;
 
      // Giving outputs based on the user's choice
+     // Just a prototype, "coming soon" will be replace with real code later
      switch (choice){
         case 1:
-            cout << "CHeck Balance -  coming soon" << endl;
+            cout << "Your Balance: RM "<< balance << endl;
             break;
 
         case 2: 
-            cout << "Reload - coming soon" << endl;
+            cout << "Enter reload amount (RM10 - RM500): RM ";
+            cin >> amount;
+
+            //Check the amount is within the allowed range
+            if (amount < 10 || amount > 600){
+                cout << "Reload failed. Amount must be between RM10 and RM500" << endl;
+            } else {
+                balance = balance + amount;
+                cout << "Reload successful! Total balance now: RM " << balance << endl;
+            }
             break;
 
         case 3: 
