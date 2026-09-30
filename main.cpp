@@ -32,7 +32,13 @@ int main(){
         cout << "Enter your choice (1-5): ";
         cin >> choice;
 
-        
+            // If the user typed letters instead of a number, reset cin
+        if (cin.fail()) {
+            cin.clear();              // clear the error so cin works again
+            cin.ignore(1000, '\n');   // throw away the wrong input
+            choice = 0;               // treat it as an invalid choice
+        }
+     
 
      // Giving outputs based on the user's choice
      // Just a prototype, "coming soon" will be replace with real code later
