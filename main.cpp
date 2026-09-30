@@ -6,6 +6,8 @@ int main(){
     int choice; //menu choices for user to choose
     double balance = 20.00; // starting wallet balance in RM
     double amount; // amount the user types in (RM)
+    int plaza; // toll plaza the user input picks
+    double fare; // toll fare for that plaza (RM)
 
    //Welcome banner
    cout << "====================================" << endl;
@@ -39,7 +41,7 @@ int main(){
             cin >> amount;
 
             //Check the amount is within the allowed range
-            if (amount < 10 || amount > 600){
+            if (amount < 10 || amount > 500){
                 cout << "Reload failed. Amount must be between RM10 and RM500" << endl;
             } else {
                 balance = balance + amount;
@@ -48,7 +50,34 @@ int main(){
             break;
 
         case 3: 
-            cout << "Pay Toll - coming soon" << endl;
+            cout << "Choose toll plaza:" << endl;
+            cout << "1. LDP          - RM 2.10" << endl;
+            cout << "2. SMART Tunnel - RM 3.00" << endl;
+            cout << "3. PLUS Highway - RM 8.50" << endl;
+            cout << "Enter plaza (1-3): ";
+            cin >> plaza;
+
+            //Set the fare based on the plaza chosen
+            if (plaza == 1){
+                fare = 2.10;
+            } else if (plaza == 2){
+                fare = 3.00;
+            } else if (plaza == 3){
+                fare = 8.50;
+            } else {
+                fare = 0; // means its invaliid as there is no choice for other fare number
+            }
+
+            //Check if the plaza is valid and the balance is enough
+            if (fare == 0){
+                cout << "Invalid plaza. Please choose 1 to 3";
+            } else if (balance < fare){
+                cout << "Insufficient balance! Please reload first" << endl;
+            } else {
+                balance = balance - fare;
+                cout << "Toll Paid: RM " << fare << endl;
+                cout << "Remaining balance: RM" << balance << endl;
+            }
             break;
 
         case 4:
