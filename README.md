@@ -16,4 +16,4 @@ TNG disrupted cash payments - first at highway tolls, then at shops with QR Scan
 - Current balance
 - Payment / reload confirmation
 - Error messages (invalid amount, insufficient balance)
-- Summary when exiting
+
